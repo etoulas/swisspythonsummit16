@@ -245,3 +245,99 @@ http://www.spiegel.de/wissenschaft/weltall/dunkle-materie-dark-energy-survey-pra
 - Astrobites Blog http://astrobites.org/2015/06/02/drones/
 
 ## Scrapy
+
+Michael Rüegg, co-founder of lauflos.ch (competitive running events)
+
+Problem: Aggregated and searchable running data
+Solution: Scrapy
+
+### Building blocks
+
+Spider: Runner to get crawl data
+Item pipeline: Persistent storage (e.g. ElasticSearch, MongoDB)
+
+1. `request` generator for all pages you want to crawl
+2. Callback method to parse the data (e.g. with request.css() use CSS selectors, XPath, regex, or custom parser)
+3. Handle `items` on single page
+
+`pyparsing` parser generator with own DSL
+
+### Run the spider
+
+```
+>>> scrapy crawl crawler2013 (name of spider)
+```
+
+### ElasticSearch Pipeline
+
+Python module: pyes
+
+### Scrapy
+
+- Throttling (based on load of client *or* server)
+- Respect the robots.txt with RobotsTxtMiddleware
+- Scrapy Shell: interactive environment to test scrapy code
+- Scrapy Cloud: "Heroku for scrapy"
+- Jobs: pause and resume jobs
+
+
+## IPython
+
+The better python shell
+
+```
+>>> pip install ipython
+>>> ipython
+```
+
+### Useful magic commands
+
+- %paste
+- %pdb (starts debugging session if an exception is raised)
+- %ls 
+- %pushd (change directory)
+- %run -p pascal.py (run file with profiling)
+- %edit pascal.py (edit file in your favorite editor)
+- !! ls (run any shell command)
+- %whos (see all local variables/imports etc.)
+
+### Cell magic
+
+- %%bash
+- %%javascript
+- %%ruby
+
+Use different programming language in one cell
+
+### Notebook
+
+Jupyter Notebook (formerly known as IPython Notebook)
+
+## pytest
+
+pytest framework with lots of plugins
+
+### Fixtures
+
+Calls fixture function until yield, then continues after the test with the rest of method.
+Name of argument of test function = fixture name
+
+```python
+@pytest.fixture
+def fortytwo():
+   return 42
+
+def test_forty(fortytwo):
+   assert fortytwo = 42
+   
+@pytest.yield_fixture
+def fix():
+   do = 3
+   something = 3
+   yield do + something
+   cleanup()
+   
+def test_bla(fix):
+    assert fix == 6
+```
+
