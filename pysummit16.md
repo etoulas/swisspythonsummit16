@@ -322,6 +322,8 @@ pytest framework with lots of plugins
 Calls fixture function until yield, then continues after the test with the rest of method.
 Name of argument of test function = fixture name
 
+http://www.the-compiler.org/tmp/sps16.htm
+
 ```python
 @pytest.fixture
 def fortytwo():
